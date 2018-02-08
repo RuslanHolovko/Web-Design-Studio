@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen|Raleway:700" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+    .page-overlay-animate{
+        overflow: hidden;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: transparent;
+        z-index: 2000;
+        animation: pageOverlayAnim .1s forwards;
+        animation-delay: 3.2s;
+    }
+
+        
+    @keyframes pageOverlayAnim {
+        0%{
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+
+    .page-overlay-animate::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        display: block;
+        background-color: #fff;
+        animation: afterAnim 1.2s forwards;
+        animation-delay: 2s;
+        animation-timing-function: cubic-bezier(.2, 1.17, 1, 1);
+        z-index: 2000;
+    }
+
+    .page-overlay-animate::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        display: block;
+        background-color: #fff;
+        animation: beforeAnim 1.2s forwards;
+        animation-delay: 2s;
+        animation-timing-function: cubic-bezier(.2, 1.17, 1, 1);
+        z-index: 2000;
+    }
+
+    .page-overlay-VerticalLine{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 1px;
+        background-color:#333;
+        opacity: 0.5;
+        z-index: 2020;
+        transform: translateY(-100%);
+        animation: VerticalLineAnim 2s forwards;
+        animation-delay: .1s;
+        animation-timing-function: cubic-bezier(.97, .01, .38, .62);
+    }
+
+    @keyframes VerticalLineAnim {
+        0%{
+            transform: translateY(-100%);
+            opacity: 1;
+        }
+        80% {
+            transform: translateY(0%);
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(0%)
+        }
+    }
+
+    @keyframes afterAnim {
+        0%{
+            transform: translateX(0%);
+            opacity: 1;
+        }
+        80%{
+            opacity: .8;
+        }
+        100% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+    }
+
+    @keyframes beforeAnim {
+        0%{
+            transform: translateX(0%);
+            opacity: 1;
+        }
+        80%{
+            opacity: .8;
+        }
+        100% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+
+    .header{
+        background-size: cover;
+        height: 100vh;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        background-position: top right;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .header-line{
+        background: #e8ebf1;
+        top: 0;
+        animation: headerLine 1.7s forwards;
+        animation-delay: 2s;
+        animation-timing-function: cubic-bezier(.97, .01, .38, .62);
+    }
+
+    .header-arrow{
+        position: absolute;
+        top: 90%;
+        left: 75%;
+        width: 50px;
+        height: 50px;
+        z-index: 20;
+    }
+
+    .header-arrow:hover{
+        cursor: pointer;
+    }
+
+    
+    .about-line{
+        background-color: #c1c7c9;
+        bottom: 0; 
+    }
+
+    .about-line-horizontal{
+        margin-top: 5%;
+        width: 100%;
+        height: 1px;
+        background-color: #f4f4f4;
+    }
+
+    .main-subheader{
+        font-size: 30px;
+        opacity: 0;
+        color: #fff!important;
+        font-weight: 700;
+        letter-spacing: 15px;
+        font-family: 'Raleway', sans-serif;
+        text-align: right;
+        animation: headerh2 1.7s forwards;
+        animation-delay: 2.2s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .main-header{
+        animation: headerh2 1.7s forwards;
+        animation-delay: 2s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .main-subheader span{
+        color: #f4e6f0;
+    }
+
+    .parallax-block{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150%;
+        bottom: 0;
+        background: url("./images/bg-firs-scr-black-white.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        animation: parallaxBg 2s forwards;
+        animation-delay: 2s;
+        animation-timing-function: cubic-bezier(.2, 1.17, 1, 1);
+    }
+
+    .header::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(61, 77, 84, 0.6);
+        z-index: 1;
+    }
+
+    .header-container,
+    .header-container-parallax{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(0%, 0%);
+        z-index: 2;
+        overflow: hidden;
+    }
+
+    </style>
+
+    <!-- intro block begin -->
+    <div class="page-overlay-animate">
+        <div class="page-overlay-VerticalLine"></div>            
+    </div>
+    <!-- intro block end -->
+
+
+    <!-- menu-begin -->
+    <div class="page-overlay"></div>
+
+    <button class="nav-button-open"> Open menu </button>
+
+    <div class="menu">
+        <nav class="menu-navigation">
+            <a rel='m_PageScroll2id' href="#Home">Home</a>
+            <a rel='m_PageScroll2id' href="#About">About Us</a>
+            <a rel='m_PageScroll2id' href="#OurTeam">Our Team</a>
+            <a rel='m_PageScroll2id' href="#Reviews">Reviews</a>
+            <a rel='m_PageScroll2id' href="#Features">Services</a>
+            <a rel='m_PageScroll2id' href="#Contacts">Contacts</a>
+        </nav>
+    </div>
+
+    
+    <!-- menu-end -->
+
+
+    <nav class="navigation">
+        <div class="nav-socials">
+
+            <a href="#">
+                <svg width="12.031" height="25.62" viewBox="0 0 12.031 25.62">
+                    <path id="facebook"  d="M463.089,5312.2v4.12s-3.037-.3-3.8.86c-0.416.64-.169,2.5-0.206,3.84h4.029c-0.34,1.56-.584,2.62-0.835,3.98h-3.216v12.8h-5.582c0-3.95,0-8.55,0-12.75h-2.375v-4.03h2.349c0.12-2.95.165-5.87,1.629-7.35C456.728,5312,458.3,5312.2,463.089,5312.2Z"
+                        transform="translate(-451.094 -5312.19)" />
+                </svg>
+            </a>
+
+            <a href="#">
+                <svg width="25.593" height="25.62" viewBox="0 0 25.593 25.62">
+                    <path id="instagram" d="M632.7,5337.8H613.5a3.2,3.2,0,0,1-3.2-3.2v-19.2a3.2,3.2,0,0,1,3.2-3.2h19.2a3.2,3.2,0,0,1,3.2,3.2v19.2A3.2,3.2,0,0,1,632.7,5337.8Zm-9.6-17.76a4.954,4.954,0,0,0-4.5,2.88h0a0.244,0.244,0,0,1-.022.05c-0.047.11-.088,0.22-0.128,0.33-0.019.05-.04,0.1-0.057,0.15-0.037.11-.067,0.23-0.1,0.34-0.014.05-.03,0.11-0.042,0.16-0.026.12-.044,0.25-0.061,0.37-0.007.05-.017,0.1-0.023,0.15a5.074,5.074,0,0,0-.029.53,4.96,4.96,0,1,0,9.92,0,5.074,5.074,0,0,0-.029-0.53c-0.006-.05-0.016-0.1-0.023-0.15-0.017-.12-0.035-0.25-0.061-0.37-0.012-.05-0.028-0.11-0.042-0.16-0.028-.11-0.058-0.23-0.1-0.34-0.017-.05-0.038-0.1-0.057-0.15-0.04-.11-0.081-0.22-0.128-0.33a0.244,0.244,0,0,1-.022-0.05h0A4.954,4.954,0,0,0,623.1,5320.04Zm9.92-3.68a1.278,1.278,0,0,0-1.28-1.28h-2.56a1.278,1.278,0,0,0-1.28,1.28v2.56a1.278,1.278,0,0,0,1.28,1.28h2.56a1.278,1.278,0,0,0,1.28-1.28v-2.56Zm0,6.56h-2.36a7.84,7.84,0,1,1-15.12,0h-2.36v10.72a1.278,1.278,0,0,0,1.28,1.28h17.28a1.278,1.278,0,0,0,1.28-1.28v-10.72Z"
+                        transform="translate(-610.313 -5312.19)" />
+                </svg>
+            </a>
+
+            <a href="#">
+                <svg width="25.594" height="20.79" viewBox="0 0 25.594 20.79">
+                    <path id="twitter" d="M516.513,5314.6a5.393,5.393,0,0,1,4.151,1.65,8.665,8.665,0,0,0,2.691-.91l0.653-.36a5.272,5.272,0,0,1-1.7,2.47,2.512,2.512,0,0,1-.577.41v0.01a9.769,9.769,0,0,0,2.973-.8v0.01a8.535,8.535,0,0,1-1.781,2.04c-0.273.22-.547,0.44-0.82,0.65a15.155,15.155,0,0,1-.243,3.38c-1.312,5.89-4.788,9.89-10.289,11.61a15.83,15.83,0,0,1-7.432.31,19.915,19.915,0,0,1-3.087-1.01,11.506,11.506,0,0,1-1.487-.77c-0.154-.09-0.307-0.19-0.461-0.28a9.219,9.219,0,0,0,1.678.06c0.517-.08,1.023-0.06,1.5-0.16a10.77,10.77,0,0,0,3.151-1.14,5.97,5.97,0,0,0,1.423-.93,4.58,4.58,0,0,1-1.563-.28,5.294,5.294,0,0,1-3.332-3.36,5.194,5.194,0,0,0,2.345-.11,3.767,3.767,0,0,1-1.717-.69,5.032,5.032,0,0,1-2.473-4.49c0.18,0.08.359,0.17,0.538,0.25a5.152,5.152,0,0,0,1.1.31,1.444,1.444,0,0,0,.718.06h-0.026c-0.264-.3-0.695-0.51-0.961-0.84a5.365,5.365,0,0,1-1.179-4.76,6,6,0,0,1,.564-1.37c0.009,0,.017.01,0.026,0.01a3.044,3.044,0,0,0,.474.55,9.443,9.443,0,0,0,1.563,1.5,15.43,15.43,0,0,0,6.419,3.1,10.137,10.137,0,0,0,2.358.31,4.908,4.908,0,0,1,.025-2.47,5.165,5.165,0,0,1,2.973-3.52,5.9,5.9,0,0,1,1.166-.36C516.086,5314.65,516.3,5314.63,516.513,5314.6Z"
+                        transform="translate(-499.094 -5314.59)" />
+                </svg>
+            </a>
+
+            <a href="#">
+                <svg width="19.594" height="25.62" viewBox="0 0 19.594 25.62">
+                    <path id="pinterest" d="M566.051,5328.85c-0.209.84-.42,1.71-0.638,2.56a18.96,18.96,0,0,1-.718,2.47,12.691,12.691,0,0,1-2.043,3.53c-0.575.66-.453,0.4-0.626,0.36-0.132-.03-0.143-0.16-0.169-0.34a19.314,19.314,0,0,1,.007-3.34,17.909,17.909,0,0,1,.589-3.47c0.484-2.07.946-4.09,1.435-6.17a1.422,1.422,0,0,0,.09-0.44,6.471,6.471,0,0,1-.429-1.7,5.448,5.448,0,0,1,.139-1.95,3.224,3.224,0,0,1,1.894-2.34,2.206,2.206,0,0,1,1.735.14,1.851,1.851,0,0,1,.867,1.24,4.463,4.463,0,0,1-.08,1.89c-0.267,1.22-.618,2.14-0.937,3.31a3.648,3.648,0,0,0-.189,1.81,2.119,2.119,0,0,0,.847,1.28,2.493,2.493,0,0,0,1.625.46,3.572,3.572,0,0,0,2.651-1.57,9.309,9.309,0,0,0,1.675-4.69,11.565,11.565,0,0,0,.07-2.01,5.473,5.473,0,0,0-1.127-3.12,5.282,5.282,0,0,0-2.512-1.71,8.285,8.285,0,0,0-3.747-.23,6.613,6.613,0,0,0-4.915,3.53,7.085,7.085,0,0,0-.837,3.41,4.438,4.438,0,0,0,.678,2.5c0.133,0.2.328,0.37,0.458,0.6a1.718,1.718,0,0,1-.119,1.16c-0.11.43-.122,1.01-0.618,1.02a1.377,1.377,0,0,1-.638-0.24,5.108,5.108,0,0,1-2.422-3.74,8.878,8.878,0,0,1,0-3.23,9.244,9.244,0,0,1,4.4-6.15,10.4,10.4,0,0,1,3.907-1.34,13.322,13.322,0,0,1,1.605-.13,9.627,9.627,0,0,1,4.326.8,8.862,8.862,0,0,1,2.98,2.15,8.14,8.14,0,0,1,1.834,3.31,7.922,7.922,0,0,1,.4,2.29,13.861,13.861,0,0,1-.308,2.37,9.315,9.315,0,0,1-3.838,6.45,6.924,6.924,0,0,1-4,1.1,4.642,4.642,0,0,1-1.983-.58A3.306,3.306,0,0,1,566.051,5328.85Z"
+                        transform="translate(-557.906 -5312.22)" />
+                </svg>
+            </a>
+            
+
+        </div>
+    </nav>
+
+    <!-- begin content-wrap -->
+    <!-- <div class="content-wrap"> -->
+
+        <header id="Home" class="header parallax" >
+            <div class="parallax-block"></div>
+            <div class="header-container-parallax">
+                <h2 class="h2 main-header">
+                    <svg viewbox="0 0 550 100" width="550px" height="100px">
+                        <text class="text-header" fill="transparent" stroke-width="1px" stroke="#fff" x="50%" y="80%" text-anchor="middle" style="font-size: 85px; font-weight: bold; font-family: Raleway,sans-serif;">Web Design</text>
+                    </svg>
+                     Studio
+                </h2>
+            </div>
+    
+            <!-- <figure class="header-arrow-down">
+                <svg version="1.1" id="Layer_1" x="0px" y="0px" width="50px" height="150px" viewBox="0 0 476.213 476.213" style="enable-background:new 0 0 476.213 476.213;" xml:space="preserve">
+                    <polygon fill="#fff" points="287.5,384.394 253.107,418.787 253.107,0 223.107,0 223.107,418.787 188.713,384.394 167.5,405.606 
+                    238.107,476.213 308.713,405.606 " />
+                </svg>
+            </figure> -->
+    
+            <div class="header-line"></div>
+
+            <div class="header-arrow">
+                <svg  x="0px" y="0px" viewBox="0 0 489.3 489.3"  xml:space="preserve">
+                    <g>
+                        <g>
+                            <path fill="#fff" d="M244.65,0c-6.8,0-12.2,5.5-12.2,12.3V342l-55.9-55.9c-4.8-4.8-12.5-4.8-17.3,0s-4.8,12.5,0,17.3l76.8,76.8
+                                c2.4,2.4,5.5,3.6,8.7,3.6c3.1,0,6.3-1.2,8.7-3.6l76.8-76.8c4.8-4.8,4.8-12.5,0-17.3s-12.5-4.8-17.3,0l-55.9,55.9V12.3
+                                C256.95,5.5,251.45,0,244.65,0z"/>
+                        </g>
+                    </g>
+                
+                </svg>
+            </div>
+    
+        </header>
+    
+        <section id="About" class="about section">
+            <div class="header-container-parallax about-container">
+                <!-- <h2 class="h2 about-header">About Us</h2> -->
+                <svg viewbox= "0 0 375 100" width="375px" height="100px">
+                    <text fill="transparent" stroke-width="1px" stroke="#c1c7c9" x="50%" y="80%" text-anchor="middle" style="font-size: 85px; font-weight: bold; font-family: Raleway,sans-serif;">About Us</text>
+                </svg>
+            </div>
+    
+            <div class="about-story">
+                <svg  viewbox="0 0 900 200" width="900px" height="200px">
+                    <defs>
+                        <clipPath id="clip1" >
+                            <text class="about-story-text" x="40%" y="80%"  text-anchor="middle" style="font-size: 85px; font-weight:bold; font-family: Raleway,sans-serif; color: #333">Story About Us</text>
+                        </clipPath>
+                        <linearGradient id="MyGradient">
+                            <stop class="firstOff" offset="70%" stop-color="#55bbc3" stop-opacity="0.2" />
+                            <stop offset="100%" stop-color="#fe0178" stop-opacity="0.1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- <image width="1000px" height="100%" preserveAspectRatio="xMidYMin slice" x="0" y="0" clip-path="url(#clip1)" xlink:href="https://media.giphy.com/media/3oz8xVqnpF68FXOZt6/giphy.gif"></image> -->
+                    <rect  fill="url(#MyGradient)" x="0" y="0" width="700px" height="200px" clip-path="url(#clip1)" /> 
+                </svg>
+            </div>
+        
+            <div class="about-our-studio container">
+                <p>
+                    Civility vicinity graceful is it at. Improve up at to on mention perhaps raising. Way building not get formerly her peculiar.
+                    Up uncommonly prosperous sentiments simplicity acceptance to so. Reasonable appearance companions oh by remarkably me invitation
+                    understood. Pursuit elderly ask perhaps all.
+                </p>
+    
+                <p>
+                    Remain lively hardly needed at do by. Two you fat downs fanny three. True mr gone most at. Dare as name just when with it
+                    body. Travelling inquietude she increasing off impossible the. Cottage be noisier looking to we promise on. Disposal
+                    to kindness appetite diverted learning of on raptures. Betrayed any may returned now dashwood formerly. Balls way delay
+                    shy boy man views. No so instrument discretion unsatiable to in.
+                </p>
+                <p>
+                    An an valley indeed so no wonder future nature vanity. Debating all she mistaken indulged believed provided declared. He
+                    many kept on draw lain song as same. Whether at dearest certain spirits is entered in to. Rich fine bred real use too many
+                    good. She compliment unaffected expression favourable any. Unknown chiefly showing to conduct no. Hung as love evil able
+                    to post at as.
+                </p>
+    
+            </div>
+    
+            <div class="about-line-horizontal"></div>
+    
+            <div id="OurTeam" class="about-our-team container">
+                <h2 class="header-our-team">
+                    <svg viewbox="0 0 390 100" width="390px" height="100px">
+                        <defs>
+                            <clipPath id="clip2">
+                                <text  class="clip2text" x="50%" y="80%" text-anchor="middle" style="font-size: 85px; font-weight: bold; font-family: Raleway,sans-serif;">Our Team</text>
+                            </clipPath>
+                            <linearGradient id="MyGradient2">
+                                <stop offset="0%" stop-color="#55bbc3" stop-opacity="0.2" />
+                                <stop offset="100%" stop-color="#fe0178" stop-opacity="0.1" />
+                            </linearGradient>
+                        </defs>
+                        <rect fill="url(#MyGradient2)" x="0" y="0" width="700px" height="200px" clip-path="url(#clip2)" />
+                    </svg>
+                </h2>
+                <div class="grid">
+    
+                    <div class="grid-item">
+                        <figure class="effect-jazz">
+                            <img src="images/Matthew.jpg" alt="img" />
+                            <figcaption>
+                                <h2>Michael
+                                    <span>Stone</span>
+                                </h2>
+                                <p>Wed Designer</p>
+                                <a href="#">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+    
+                    <div class="grid-item">
+                        <figure class="effect-jazz">
+                            <img src="images/Michael.jpg" alt="img" />
+                            <figcaption>
+                                <h2>John 
+                                    <span>Doe</span>
+                                 </h2>
+                                <p>Wed Developer</p>
+                                <a href="#">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+    
+                    <div class="grid-item">
+                        <figure class="effect-jazz">
+                            <img src="images/Cristopher.jpg" alt="img" />
+                            <figcaption>
+                                <h2>Jason
+                                    <span>Bourne</span>
+                                </h2>
+                                <p>Seo</p>
+                                <a href="#">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+    
+                </div>
+            </div>
+    
+            <div class="about-line"></div>
+            
+        </section>
+    
+        <section id="Reviews" class="reviews section parallax" data-stellar-background-ratio="0.5" >
+            <div class="reviews-container">
+                <h2 class="h2 reviews-header">
+                    <svg viewbox="0 0 390 100" width="390px" height="100px">
+                        <text class="reviews-text" fill="transparent" stroke="#fff" stroke-width="1px" x="50%" y="80%" text-anchor="middle" style="font-size: 85px; font-weight: bold; font-family: Raleway,sans-serif;">Reviews</text>
+                    </svg>
+                </h2>
+    
+                <div class="owl-carousel">
+                    <div> 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim illo voluptatum quod, veritatis eveniet, consectetur distinctio animi, blanditiis quisquam recusandae cumque ab laborum accusamus voluptates dicta culpa! Delectus culpa maiores assumenda soluta? Eveniet veniam, numquam quia optio ab minima voluptatem earum ad fuga laudantium esse, dolorem maiores voluptates aliquid iusto! 
+    
+                        <span class="reviews-name">Victor Ruiz</span>
+    
+                    </div>
+                    <div> 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim illo voluptatum quod, veritatis eveniet, consectetur distinctio animi, blanditiis quisquam recusandae cumque ab laborum accusamus voluptates dicta culpa! Delectus culpa maiores assumenda soluta? Eveniet veniam, numquam quia optio ab minima voluptatem earum ad fuga laudantium esse, dolorem maiores voluptates aliquid iusto! 
+    
+                        <span class="reviews-name">Victoria Ruiz</span>
+    
+                    </div>
+                    <div> 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim illo voluptatum quod, veritatis eveniet, consectetur distinctio animi, blanditiis quisquam recusandae cumque ab laborum accusamus voluptates dicta culpa! Delectus culpa maiores assumenda soluta? Eveniet veniam, numquam quia optio ab minima voluptatem earum ad fuga laudantium esse, dolorem maiores voluptates aliquid iusto!
+                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim illo voluptatum quod, veritatis eveniet, consectetur distinctio
+                        animi, blanditiis quisquam recusandae cumque ab laborum accusamus voluptates dicta culpa! Delectus culpa maiores assumenda
+                        soluta? Eveniet veniam, numquam quia optio ab minima voluptatem earum ad fuga laudantium esse, dolorem maiores voluptates
+                        aliquid iusto!
+    
+                        <span class="reviews-name">Anton Cubicov</span>
+    
+                    </div>
+                </div>
+    
+            </div>
+        </section>
+
+        <section id="Features" class="services section">
+            <div class="container">
+                <h3 class="services-tittle">
+                    <svg viewBox="0 0 530 100" width="530px" height="100px">
+                        <defs>
+                            <clipPath id="clip5">
+                                <text class="features-text" x="50%" y="80%" text-anchor="middle" style="font-size: 85px; font-weight: bold; font-family: Raleway,sans-serif;">Our Features</text>
+                            </clipPath>
+                            <linearGradient id="MyGradient5">
+                                <stop offset="40%" stop-color="#55bbc3" stop-opacity="0.3"></stop>
+                                <stop offset="100%" stop-color="#fe0178" stop-opacity="0.1"></stop>
+                            </linearGradient>
+                        </defs>
+                        <rect fill="url(#MyGradient5)" x="0" y="0" width="700px" height="200px" clip-path="url(#clip5)"></rect>
+                    </svg>
+                </h3>
+
+                <div class="services-block">
+                    <div class="services-item">
+                        <h4 class="h4">Web Design</h4>
+
+                        <figure class="services-figure">
+                            <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
+                            <path style="fill:#9BAAAB;" d="M505.328,498.2L18.105,10.977c-2.311-2.311-5.791-3.003-8.81-1.752
+                                c-3.021,1.25-4.991,4.2-4.991,7.469v487.223c0,4.466,3.62,8.084,8.084,8.084h487.223c3.27,0,6.217-1.969,7.469-4.991
+                                C508.332,503.989,507.64,500.512,505.328,498.2z M85.149,431.156V192.304l239.676,238.852L85.149,431.156L85.149,431.156z"></path>
+                            <path style="fill:#687F82;" d="M261.718,254.588l-56.936,56.936l120.044,119.632H85.149L6.673,509.633
+                                c1.463,1.463,3.484,2.368,5.716,2.368h487.223c3.27,0,6.217-1.969,7.469-4.991s0.559-6.498-1.753-8.811L261.718,254.588z"></path>
+                            <g>
+                                <path style="fill:#365558;" d="M77.066,461.338c-4.465,0-8.084,3.619-8.084,8.084V512H85.15v-42.578
+                                    C85.15,464.958,81.531,461.338,77.066,461.338z"></path>
+                                <path style="fill:#365558;" d="M141.741,461.338c-4.465,0-8.084,3.619-8.084,8.084V512h16.169v-42.578
+                                    C149.826,464.958,146.206,461.338,141.741,461.338z"></path>
+                                <path style="fill:#365558;" d="M206.417,461.338c-4.465,0-8.084,3.619-8.084,8.084V512h16.169v-42.578
+                                    C214.502,464.958,210.882,461.338,206.417,461.338z"></path>
+                                <path style="fill:#365558;" d="M271.093,461.338c-4.465,0-8.084,3.619-8.084,8.084V512h16.169v-42.578
+                                    C279.177,464.958,275.557,461.338,271.093,461.338z"></path>
+                                <path style="fill:#365558;" d="M335.768,461.338c-4.465,0-8.084,3.619-8.084,8.084V512h16.169v-42.578
+                                    C343.853,464.958,340.233,461.338,335.768,461.338z"></path>
+                                <path style="fill:#365558;" d="M400.444,461.338c-4.465,0-8.084,3.619-8.084,8.084V512h16.169v-42.578
+                                    C408.528,464.958,404.909,461.338,400.444,461.338z"></path>
+                            </g>
+                            <g>
+                                <path style="fill:#FFFFFF;" d="M176.234,231.74c-2.069,0-4.138-0.789-5.716-2.367L49.79,108.645c-3.157-3.158-3.157-8.276,0-11.434
+                                    c3.157-3.156,8.276-3.156,11.432,0L181.95,217.939c3.157,3.158,3.157,8.276,0,11.434C180.372,230.95,178.304,231.74,176.234,231.74
+                                    z"></path>
+                                <path style="fill:#FFFFFF;" d="M219.351,279.168c-2.069,0-4.138-0.789-5.716-2.367l-21.559-21.559
+                                    c-3.157-3.158-3.157-8.276,0-11.434c3.157-3.156,8.276-3.156,11.432,0l21.559,21.559c3.157,3.158,3.157,8.276,0,11.434
+                                    C223.489,278.379,221.421,279.168,219.351,279.168z"></path>
+                            </g>
+                            <path style="fill: #eddfec;" d="M444.352,214.61L257.749,28.007c-1.516-1.516-3.572-2.367-5.716-2.367s-4.201,0.852-5.716,2.367
+                                l-85.367,85.367c-1.517,1.517-2.368,3.572-2.368,5.717c0,2.144,0.852,4.2,2.368,5.717l186.603,186.602
+                                c1.578,1.578,3.648,2.367,5.716,2.367s4.138-0.789,5.716-2.367l85.367-85.366c1.517-1.517,2.368-3.572,2.368-5.717
+                                C446.72,218.182,445.869,216.127,444.352,214.61z"></path>
+                            <path style="fill: #dbe3eb;" d="M203.997,70.326l-43.048,43.048c-1.517,1.517-2.368,3.572-2.368,5.717c0,2.144,0.852,4.2,2.368,5.717
+                                l186.603,186.602c1.578,1.578,3.648,2.367,5.716,2.367c2.069,0,4.138-0.789,5.716-2.367l43.048-43.048L203.997,70.326z"></path>
+                            <path style="fill:#4ACFD9;" d="M416.912,242.049L230.309,55.447c-3.157-3.156-8.276-3.156-11.432,0l-30.488,30.488
+                                c-1.517,1.517-2.368,3.572-2.368,5.717c0,2.144,0.852,4.2,2.368,5.717l186.603,186.602c1.578,1.578,3.648,2.367,5.716,2.367
+                                c2.069,0,4.138-0.789,5.716-2.367l30.488-30.488c1.517-1.517,2.368-3.572,2.368-5.717
+                                C419.281,245.621,418.429,243.565,416.912,242.049z"></path>
+                            <path style="fill:#0295AA;" d="M203.997,70.326l-15.608,15.608c-1.517,1.517-2.368,3.572-2.368,5.717c0,2.144,0.852,4.2,2.368,5.717
+                                l186.603,186.602c1.578,1.578,3.648,2.367,5.716,2.367c2.069,0,4.138-0.789,5.716-2.367l15.608-15.608L203.997,70.326z"></path>
+                            <g>
+                                <path style="fill:#FFD1A9;" d="M139.607,6.665c-1.911,1.911-2.741,4.651-2.211,7.302l21.342,106.709l94.88-94.88L146.909,4.454
+                                    C144.258,3.923,141.518,4.753,139.607,6.665z"></path>
+                                <path style="fill:#FFD1A9;" d="M139.994,6.324c-0.129,0.113-0.264,0.219-0.387,0.342c-1.911,1.911-2.741,4.651-2.211,7.302
+                                    l21.342,106.709l47.805-47.805L139.994,6.324z"></path>
+                            </g>
+                            <path style="fill:#687F82;" d="M139.607,6.665c-1.911,1.911-2.741,4.651-2.211,7.302l9.146,45.733l46.099-46.1l-45.732-9.146
+                                C144.258,3.923,141.518,4.753,139.607,6.665z"></path>
+                            <path style="fill:#365558;" d="M139.994,6.324c-0.129,0.113-0.264,0.219-0.387,0.342c-1.911,1.911-2.741,4.651-2.211,7.302
+                                l9.146,45.733l23.414-23.415L139.994,6.324z"></path>
+                            <path style="fill:#CDD4D5;" d="M444.352,214.61l-96.801,96.801l60.977,60.976c1.578,1.578,3.648,2.367,5.716,2.367
+                                s4.138-0.789,5.716-2.367l85.367-85.366c1.517-1.517,2.368-3.573,2.368-5.717s-0.852-4.2-2.368-5.717L444.352,214.61z"></path>
+                            <path style="fill:#9BAAAB;" d="M396.316,262.646l-48.765,48.765l60.977,60.976c1.578,1.578,3.648,2.367,5.716,2.367
+                                s4.138-0.789,5.716-2.367l43.048-43.048L396.316,262.646z"></path>
+                            <path style="fill:#FFFFFF;" d="M456.495,292.103c-2.069,0-4.138-0.789-5.716-2.367l-21.559-21.559
+                                c-3.157-3.158-3.157-8.276,0-11.434c3.157-3.156,8.276-3.156,11.432,0l21.559,21.559c3.157,3.158,3.157,8.276,0,11.434
+                                C460.633,291.314,458.565,292.103,456.495,292.103z"></path>
+                            <path style="fill:#4ACFD9;" d="M505.328,100.133L413.863,8.667c-11.558-11.556-30.363-11.555-41.922,0l-27.44,27.44
+                                c-11.558,11.559-11.558,30.364,0,41.923l91.464,91.466c1.516,1.516,3.572,2.367,5.716,2.367c2.144,0,4.201-0.852,5.716-2.367
+                                l57.928-57.928C508.487,108.409,508.487,103.291,505.328,100.133z"></path>
+                            <path style="fill: #687f82;" d="M441.684,171.863c2.144,0,4.201-0.852,5.716-2.367l57.928-57.928c3.157-3.158,3.157-8.276,0-11.434
+                                l-60.976-60.976l-69.361,69.361l60.976,60.977C437.484,171.011,439.54,171.863,441.684,171.863z"></path>
+                            <path style="fill:#0295AA;" d="M358.465,22.144l-13.962,13.962c-11.558,11.559-11.558,30.364,0,41.923l91.464,91.466
+                                c1.516,1.516,3.572,2.367,5.716,2.367s4.201-0.852,5.716-2.367l29.208-29.208L358.465,22.144z"></path>
+                            <path style="fill: #f2e8f1;" d="M409.914,73.594l-34.924,34.924l60.976,60.977c1.516,1.516,3.572,2.367,5.716,2.367
+                                s4.201-0.852,5.716-2.367l29.208-29.208L409.914,73.594z"></path>
+                            <path style="fill:#FFFFFF;" d="M463.026,113.934c-2.069,0-4.138-0.789-5.716-2.367l-24.39-24.391c-3.157-3.158-3.157-8.276,0-11.434
+                                c3.157-3.156,8.276-3.156,11.432,0l24.39,24.391c3.157,3.158,3.157,8.276,0,11.434C467.164,113.145,465.095,113.934,463.026,113.934
+                                z"></path>
+                            </svg>
+
+                        </figure> 
+                    </div>
+                    
+                    <div class="services-item">
+                        <h4 class="h4">Layout</h4>
+
+                        <figure class="services-figure">
+                            <svg x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <path style="fill:#E6EAEA;" d="M503.983,4.276H8.017C3.589,4.276,0,7.865,0,12.292v487.415c0,4.427,3.589,8.017,8.017,8.017h495.967
+                                c4.427,0,8.017-3.589,8.017-8.017V12.292C512,7.865,508.411,4.276,503.983,4.276z"></path>
+                            <path style="fill:#9BAAAB;" d="M503.983,4.276H8.017C3.589,4.276,0,7.865,0,12.292v110.63h512V12.292
+                                C512,7.865,508.411,4.276,503.983,4.276z"></path>
+                            <path style="fill:#CDD4D5;" d="M8.017,4.276C3.589,4.276,0,7.865,0,12.292v487.415c0,4.427,3.589,8.017,8.017,8.017H256V4.276H8.017
+                                z"></path>
+                            <path style="fill:#687F82;" d="M8.017,4.276C3.589,4.276,0,7.865,0,12.292v110.63h256V4.276H8.017z"></path>
+                            <path style="fill:#4ACFD9;" d="M264.551,29.929c-18.566,0-33.67,15.105-33.67,33.67s15.105,33.67,33.67,33.67
+                                s33.67-15.105,33.67-33.67S283.117,29.929,264.551,29.929z"></path>
+                            <path style="fill: #cceaed;" d="M170.489,29.929c-18.566,0-33.67,15.105-33.67,33.67s15.105,33.67,33.67,33.67
+                                s33.67-15.105,33.67-33.67S189.054,29.929,170.489,29.929z"></path>
+                            <path style="fill: #f1deeb;" d="M76.426,29.929c-18.566,0-33.67,15.105-33.67,33.67s15.105,33.67,33.67,33.67
+                                s33.67-15.105,33.67-33.67S94.992,29.929,76.426,29.929z"></path>
+                            <g>
+                                <path style="fill:#FFFFFF;" d="M427.023,54.514H332.96c-4.428,0-8.017-3.589-8.017-8.017s3.588-8.017,8.017-8.017h94.063
+                                    c4.428,0,8.017,3.589,8.017,8.017S431.451,54.514,427.023,54.514z"></path>
+                                <path style="fill:#FFFFFF;" d="M469.779,54.514h-17.102c-4.428,0-8.017-3.589-8.017-8.017s3.588-8.017,8.017-8.017h17.102
+                                    c4.428,0,8.017,3.589,8.017,8.017S474.207,54.514,469.779,54.514z"></path>
+                            </g>
+                            <g>
+                                <path style="fill: #cceaed;" d="M464.942,290.914l-81.236-76.959c-4.664-4.419-10.771-6.767-17.19-6.583
+                                    c-6.422,0.174-12.392,2.838-16.809,7.501c-4.419,4.664-6.757,10.768-6.583,17.191c0.174,6.421,2.837,12.391,7.501,16.809
+                                    l62.274,58.995l-61.769,55.267c-4.788,4.283-7.62,10.175-7.977,16.589c-0.356,6.414,1.806,12.583,6.091,17.371
+                                    c4.557,5.092,11.091,8.012,17.927,8.014c0.001,0,0.002,0,0.003,0c5.918,0,11.611-2.176,16.029-6.127l81.236-72.685
+                                    c4.996-4.47,7.915-10.878,8.01-17.581C472.543,302.012,469.807,295.524,464.942,290.914z"></path>
+                                <path style="fill: #cceaed;" d="M306.48,219.121c-11.495-6.614-26.226-2.647-32.842,8.843l-81.236,141.094
+                                    c-6.618,11.492-2.65,26.225,8.843,32.843c3.648,2.099,7.792,3.21,11.983,3.21c8.585,0,16.577-4.619,20.857-12.053l81.236-141.093
+                                    c3.205-5.567,4.051-12.05,2.382-18.252C316.033,227.509,312.047,222.327,306.48,219.121z"></path>
+                            </g>
+                            <g>
+                                <path style="fill: #f1dfec;" d="M192.402,369.058c-6.618,11.492-2.65,26.225,8.843,32.843c3.648,2.099,7.792,3.21,11.983,3.21
+                                    c8.585,0,16.577-4.619,20.857-12.053l21.913-38.06v-96.4L192.402,369.058z"></path>
+                                <path style="fill: #cceaed;" d="M168.877,232.063c0.174-6.422-2.163-12.527-6.582-17.191c-4.419-4.664-10.389-7.327-16.811-7.501
+                                    c-6.403-0.175-12.526,2.165-17.19,6.582l-81.236,76.96c-4.866,4.61-7.602,11.098-7.507,17.801
+                                    c0.095,6.703,3.015,13.112,8.011,17.581l81.237,72.686c4.417,3.951,10.109,6.126,16.029,6.126c0.001,0,0.002,0,0.003,0
+                                    c6.836,0,13.371-2.921,17.927-8.013c8.842-9.883,7.996-25.117-1.887-33.96l-61.769-55.267l62.274-58.995
+                                    C166.039,244.454,168.703,238.484,168.877,232.063z"></path>
+                            </g></svg>
+
+                        </figure> 
+                    </div>
+                    
+                    <div class="services-item">
+                        <h4 class="h4">Backend/CMS</h4>
+
+                        <figure class="services-figure">
+                            <svg x="0px" y="0px" viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 511.999 511.999;" xml:space="preserve">
+                            <g>
+                                <path style="fill:#CDD4D5;" d="M370.885,327.27L186.862,143.248c-3.123-3.124-8.188-3.124-11.312,0l-30.169,30.167
+                                    c-1.501,1.5-2.343,3.535-2.343,5.656s0.843,4.157,2.343,5.656l184.023,184.024c1.5,1.501,3.535,2.343,5.656,2.343
+                                    c2.121,0,4.157-0.843,5.656-2.343l30.167-30.169C374.009,335.459,374.009,330.394,370.885,327.27z"></path>
+                                <path style="fill:#CDD4D5;" d="M214.012,73.862L144.626,4.476c-3.124-3.124-8.189-3.124-11.313,0l-30.166,30.167
+                                    c-3.124,3.124-3.124,8.189,0,11.312l51.662,51.662l-55.056,55.056L48.09,101.013c-3.124-3.124-8.189-3.124-11.312,0L6.61,131.18
+                                    c-3.124,3.124-3.124,8.189,0,11.312l69.386,69.386c1.507,1.507,3.544,2.343,5.656,2.343c0.241,0,0.483-0.011,0.725-0.033
+                                    l66.37-6.034c1.863-0.17,3.608-0.987,4.932-2.31l54.302-54.302c1.324-1.324,2.141-3.069,2.31-4.932l6.034-66.37
+                                    C216.538,77.877,215.691,75.539,214.012,73.862z"></path>
+                            </g>
+                            <path style="fill:#FFFFFF;" d="M167.172,76.537c-2.047,0-4.095-0.781-5.656-2.343l-21.332-21.332c-3.124-3.124-3.124-8.189,0-11.312
+                                c3.124-3.124,8.189-3.124,11.312,0l21.332,21.332c3.124,3.124,3.124,8.189,0,11.312C171.266,75.756,169.219,76.537,167.172,76.537z"></path>
+                            <path style="fill:#CDD4D5;" d="M509.657,369.506l-69.386-69.386c-1.679-1.679-4.017-2.525-6.38-2.31l-66.37,6.034
+                                c-1.863,0.17-3.608,0.987-4.932,2.31l-54.302,54.302c-1.324,1.324-2.141,3.069-2.31,4.932l-6.034,66.37
+                                c-0.215,2.365,0.631,4.703,2.31,6.38l69.386,69.386c1.561,1.561,3.609,2.343,5.656,2.343c2.047,0,4.095-0.781,5.656-2.343
+                                l30.167-30.167c3.124-3.124,3.124-8.189,0-11.312l-51.662-51.662l55.056-55.056l51.662,51.662c3.124,3.124,8.189,3.124,11.312,0
+                                l30.167-30.167C512.781,377.694,512.781,372.629,509.657,369.506z"></path>
+                            <path style="fill:#687F82;" d="M160.98,157.816l-15.6,15.599c-1.501,1.5-2.343,3.535-2.343,5.656s0.843,4.157,2.343,5.656
+                                l184.024,184.024c1.5,1.501,3.535,2.343,5.656,2.343c2.121,0,4.157-0.843,5.656-2.343l15.599-15.6L160.98,157.816z"></path>
+                            <g>
+                                <path style="fill:#9BAAAB;" d="M127.796,124.631l-28.044,28.044L48.09,101.013c-3.124-3.124-8.189-3.124-11.312,0L6.61,131.18
+                                    c-3.124,3.124-3.124,8.189,0,11.312l69.386,69.386c1.507,1.507,3.544,2.343,5.656,2.343c0.241,0,0.483-0.011,0.725-0.033
+                                    l66.37-6.034c1.863-0.17,3.608-0.987,4.932-2.31l27.666-27.666L127.796,124.631z"></path>
+                                <path style="fill:#9BAAAB;" d="M308.287,360.455c-1.324,1.324-2.141,3.069-2.31,4.932l-6.034,66.37
+                                    c-0.215,2.365,0.631,4.703,2.31,6.38l69.386,69.386c1.561,1.561,3.609,2.343,5.656,2.343c2.047,0,4.095-0.781,5.656-2.343
+                                    l30.167-30.167c3.124-3.124,3.124-8.189,0-11.312l-51.662-51.663l28.044-28.044l-53.547-53.547L308.287,360.455z"></path>
+                            </g>
+                            <g>
+                                <path style="fill:#CDD4D5;" d="M363.602,145.459l-24.134-24.135c-3.124-3.124-8.189-3.124-11.312,0L168.266,281.213
+                                    c-3.124,3.124-3.124,8.189,0,11.313L192.4,316.66c1.561,1.561,3.609,2.343,5.656,2.343c2.048,0,4.095-0.781,5.656-2.343
+                                    l159.889-159.889C366.726,153.647,366.726,148.582,363.602,145.459z"></path>
+                                <path style="fill:#CDD4D5;" d="M463.155,45.905L439.021,21.77c-2.358-2.358-5.93-3.007-8.967-1.625l-66.37,30.169
+                                    c-0.874,0.397-1.668,0.947-2.346,1.625l-51.283,51.285c-3.124,3.124-3.124,8.189,0,11.312l60.335,60.335
+                                    c1.561,1.563,3.609,2.343,5.656,2.343c2.047,0,4.095-0.781,5.656-2.343l51.285-51.285c0.678-0.678,1.229-1.473,1.625-2.346
+                                    l30.167-66.37C466.161,51.835,465.514,48.262,463.155,45.905z"></path>
+                            </g>
+                            <path style="fill: #cceaed;" d="M200.696,362.666L122.26,284.23c-3.124-3.124-8.189-3.124-11.312,0l-93.52,93.52
+                                c-3.124,3.124-3.124,8.189,0,11.313l78.436,78.436c1.561,1.561,3.609,2.343,5.656,2.343c2.047,0,4.095-0.781,5.656-2.343
+                                l93.52-93.52C203.82,370.855,203.82,365.79,200.696,362.666z"></path>
+                            <path style="fill: #f1dfec;" d="M122.26,284.23c-3.124-3.124-8.189-3.124-11.312,0l-93.52,93.52c-3.124,3.124-3.124,8.189,0,11.313
+                                l38.888,38.889l104.833-104.833L122.26,284.23z"></path>
+                            <g>
+                                
+                                    <rect x="101.058" y="301.733" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -79.6002 718.7493)" style="fill:#365558;" width="15.999" height="148.255"></rect>
+                                
+                                    <rect x="123.689" y="323.476" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -54.8325 768.2274)" style="fill:#365558;" width="15.999" height="143.988"></rect>
+                            </g>
+                            <g>
+                                
+                                    <rect x="81.456" y="281.248" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -97.0708 666.2763)" style="fill:#687F82;" width="15.999" height="143.988"></rect>
+                                
+                                    <rect x="31.939" y="369.099" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 444.7211 561.5195)" style="fill:#687F82;" width="148.255" height="7.53"></rect>
+                                <path style="fill:#687F82;" d="M351.206,133.062L180.004,304.263l12.396,12.396c1.561,1.561,3.609,2.343,5.656,2.343
+                                    c2.048,0,4.095-0.781,5.656-2.343L363.602,156.77c3.124-3.124,3.124-8.189,0-11.312L351.206,133.062z"></path>
+                            </g>
+                            <path style="fill:#9BAAAB;" d="M450.759,33.508L339.893,144.375l30.497,30.497c1.561,1.563,3.609,2.343,5.656,2.343
+                                c2.047,0,4.095-0.781,5.656-2.343l51.285-51.285c0.678-0.678,1.229-1.473,1.625-2.346l30.167-66.37
+                                c1.38-3.036,0.733-6.609-1.625-8.967L450.759,33.508z"></path>
+                            <path style="fill: #cdd4d5;" d="M74.371,484.926c1.327,0,2.663-0.33,3.882-1.007l27.15-15.084l-89.314-89.313L1.007,406.673
+                                c-1.734,3.122-1.189,7.016,1.336,9.541l66.37,66.369C70.252,484.123,72.3,484.926,74.371,484.926z"></path>
+                            <path style="fill: #e6eaea;" d="M16.091,379.522L1.007,406.673c-1.734,3.122-1.189,7.016,1.336,9.541l32.855,32.855l25.22-25.22
+                                L16.091,379.522z"></path>
+                            <path style="fill: #cceaed;" d="M164.495,266.13c-2.312-2.311-5.8-2.984-8.808-1.696l-42.235,18.101l88.94,88.94l18.101-42.235
+                                c1.288-3.007,0.617-6.494-1.696-8.808L164.495,266.13z"></path>
+                            <path style="fill: #687f82;" d="M164.495,266.13c-2.312-2.311-5.8-2.984-8.808-1.696l-42.235,18.101l44.141,44.141l33.723-33.723
+                                L164.495,266.13z"></path>
+                            <path style="fill:#FFFFFF;" d="M353.575,117.36c-2.047,0-4.095-0.781-5.656-2.343c-3.124-3.124-3.124-8.189,0-11.312l25.598-25.598
+                                c3.124-3.124,8.189-3.124,11.312,0c3.124,3.124,3.124,8.189,0,11.312l-25.598,25.598C357.669,116.578,355.623,117.36,353.575,117.36
+                                z"></path>
+                            </svg>
+                        </figure> 
+                    </div>
+                    
+                    <div class="services-item">
+                        <h4 class="h4">Responsive</h4>
+
+                        <figure class="services-figure">
+                            <svg x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <path style="fill:#365558;" d="M303.031,426.489c-94.008,0-170.489-76.481-170.489-170.489s76.48-170.489,170.489-170.489
+                                S473.52,161.993,473.52,256S397.039,426.489,303.031,426.489z M303.031,101.545c-85.167,0-154.455,69.288-154.455,154.455
+                                s69.288,154.455,154.455,154.455S457.486,341.167,457.486,256S388.199,101.545,303.031,101.545z"></path>
+                            <path style="fill:#E6EAEA;" d="M491.157,162.472H388.543c-4.427,0-8.017,3.588-8.017,8.017v188.125c0,4.428,3.589,8.017,8.017,8.017
+                                h102.614c4.427,0,8.017-3.588,8.017-8.017V170.489C499.173,166.06,495.584,162.472,491.157,162.472z"></path>
+                            <path style="fill:#CDD4D5;" d="M388.543,162.472c-4.427,0-8.017,3.588-8.017,8.017v188.125c0,4.428,3.589,8.017,8.017,8.017h51.307
+                                V162.472H388.543z"></path>
+                            <path style="fill:#9BAAAB;" d="M499.173,299.29H380.526v59.324c0,4.427,3.589,8.017,8.017,8.017h102.614
+                                c4.427,0,8.017-3.589,8.017-8.017V299.29z"></path>
+                            <g>
+                                <path style="fill:#687F82;" d="M380.526,299.29v59.324c0,4.427,3.589,8.017,8.017,8.017h51.307v-67.34H380.526z"></path>
+                                <path style="fill:#687F82;" d="M448.401,340.977h-17.102c-4.427,0-8.017-3.588-8.017-8.017c0-4.428,3.589-8.017,8.017-8.017h17.102
+                                    c4.427,0,8.017,3.588,8.017,8.017C456.418,337.389,452.828,340.977,448.401,340.977z"></path>
+                            </g>
+                            <path style="fill:#365558;" d="M431.299,324.944c-4.427,0-8.017,3.588-8.017,8.017c0,4.428,3.589,8.017,8.017,8.017h8.551v-16.033
+                                H431.299z"></path>
+                            <path style="fill:#E6EAEA;" d="M328.685,247.983H37.946c-4.427,0-8.017,3.588-8.017,8.017v247.983c0,4.428,3.589,8.017,8.017,8.017
+                                h290.739c4.427,0,8.017-3.588,8.017-8.017V256C336.701,251.572,333.112,247.983,328.685,247.983z"></path>
+                            <path style="fill: #0295aa;" d="M353.804,461.762H12.827v42.221c0,4.427,3.589,8.017,8.017,8.017h324.944
+                                c4.427,0,8.017-3.589,8.017-8.017V461.762z"></path>
+                            <path style="fill:#CDD4D5;" d="M37.946,247.983c-4.427,0-8.017,3.588-8.017,8.017v247.983c0,4.428,3.589,8.017,8.017,8.017h149.645
+                                V247.983H37.946z"></path>
+                            <g>
+                                <path style="fill: #f1dfec;" d="M12.827,461.762v42.221c0,4.427,3.589,8.017,8.017,8.017h166.747v-50.238H12.827z"></path>
+                                <path style="fill: #ffd1a9;" d="M157.662,469.779h59.858v13.361c0,4.427-3.589,8.017-8.017,8.017h-43.825
+                                    c-4.427,0-8.017-3.589-8.017-8.017V469.779z"></path>
+                            </g>
+                            <path style="fill: #cceaed;" d="M157.662,469.779h29.929v21.378h-21.912c-4.427,0-8.017-3.589-8.017-8.017V469.779z"></path>
+                            <path style="fill:#E6EAEA;" d="M320.134,0H63.599c-4.427,0-8.017,3.588-8.017,8.017v188.125c0,4.428,3.589,8.017,8.017,8.017
+                                h256.534c4.427,0,8.017-3.588,8.017-8.017V8.017C328.15,3.588,324.561,0,320.134,0z"></path>
+                            <path style="fill:#CDD4D5;" d="M55.582,97.804v98.338c0,4.428,3.589,8.017,8.017,8.017h256.534c4.427,0,8.017-3.588,8.017-8.017
+                                V97.804H55.582z"></path>
+                            <path style="fill:#4ACFD9;" d="M320.134,0H260.81v204.159h59.324c4.427,0,8.017-3.589,8.017-8.017V8.017
+                                C328.15,3.589,324.561,0,320.134,0z"></path>
+                            <path style="fill:#0295AA;" d="M260.81,97.804v106.355h59.324c4.427,0,8.017-3.589,8.017-8.017V97.804H260.81z"></path>
+                            <path style="fill:#687F82;" d="M294.48,118.647c-4.427,0-8.017-3.588-8.017-8.017V84.977c0-4.428,3.589-8.017,8.017-8.017
+                                c4.427,0,8.017,3.588,8.017,8.017v25.653C302.497,115.059,298.908,118.647,294.48,118.647z"></path>
+                            <path style="fill:#365558;" d="M286.463,97.804v12.827c0,4.428,3.589,8.017,8.017,8.017c4.427,0,8.017-3.588,8.017-8.017V97.804
+                                H286.463z"></path>
+                            </svg>
+
+                        </figure> 
+                    </div>
+                    
+                </div>
+
+
+                <a data-fancybox data-animation-duration="700" data-src="#animatedModal" href="javascript:;" class="services-button feedback">Get In Touch</a>
+            </div>
+        </section>
+
+        <div id="animatedModal" class="animated-modal">
+            <form class="getInTouch-form">
+                <label><input type="email" placeholder="Your Email" required></label>
+                <label><input type="name" placeholder="Your Name" required></label>
+                <label><input placeholder="Your phone number" type="tel" name="tel"  required></label>
+                <button class="getInTouch-form-button services-button feedback" type="submit" >Submit</button>
+            </form>
+        </div>
+
+        <section id="Contacts" class="periscope section">
+            <div class="periscop-block">
+                <div class="periscope-inner">
+                    <h3 class="tittle">Contact Us</h3>
+                    <span class="tel">+ 900-33-56-40</span>
+                    <span class="tel">+ 900-45-76-40</span>
+                    <span class="adress">Kharkov, Sumskaya street.50</span>
+                    <span class="mail"><strong>Mail :</strong> SYN@gmail.com </span>
+                    <span class="skype"><strong>Skype :</strong> SynTo90 </span>
+                </div>
+            </div>
+        </section>
+
+
+    <!--  </div> -->
+    <!-- end content-wrap -->
+
+
+        
+    <link rel="stylesheet" href="css/main.css">
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+    <script src="js/jquery.malihu.PageScroll2id.js"></script>
+    <script src="js/stellar.js"></script>
+    <script src="js/jQuery.scrollSpeed.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
